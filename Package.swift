@@ -13,6 +13,10 @@ let package = Package(
         .library(
             name: "FireThelFirestore",
             targets: ["FireThelFirestore"]),
+        .library(
+            name: "FireThelRealtimeDatabase",
+            targets: ["FireThelRealtimeDatabase"]
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,6 +29,13 @@ let package = Package(
             dependencies: [
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
+            ]
+        ),
+        .target(
+            name: "FireThelRealtimeDatabase",
+            dependencies: [
+                .product(name: "FirebaseDatabase", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseDatabaseSwift", package: "firebase-ios-sdk"),
             ]
         )
     ]
