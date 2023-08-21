@@ -39,7 +39,7 @@ extension DatabaseReference {
     public func observeChildNode<T: Codable>(
         path: Path,
         event: DataEventType
-    ) -> AnyPublisher<[T], Error> {
+    ) -> AnyPublisher<T, Error> {
         let ref = self.child(path)
         return Publishers.ObserveNodePublisher(ref: ref, event: event).eraseToAnyPublisher()
     }
