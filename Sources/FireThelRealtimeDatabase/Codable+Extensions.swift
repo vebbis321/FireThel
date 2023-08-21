@@ -8,13 +8,13 @@
 import Foundation
 
 extension Encodable {
-    func dict() throws -> [String: Codable] {
+    func dict() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
         return try castDataToDict(data: data)
     }
 
-    private func castDataToDict(data: Data) throws -> [String: Codable] {
-        guard let dict = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Codable] else {
+    private func castDataToDict(data: Data) throws -> [String: Any] {
+        guard let dict = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] else {
             throw RealtimeDatabaseError.defaultCustom("Casting error!")
         }
         return dict
